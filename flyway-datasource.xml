@@ -1,0 +1,21 @@
+<!--
+1) Install the MySQL driver using:
+> install -s mvn:mysql/mysql-connector-java/5.1.18
+
+2) Copy this file to the <karaf-root-dir>/deploy folder
+-->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+  
+  <bean id="dataSource2" class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
+      <property name="url" value="jdbc:mysql://localhost:3306/flyway_demo"/>
+      <property name="user" value="root"/>
+      <property name="password" value="adobe"/>
+  </bean>
+  
+  <service interface="javax.sql.DataSource" ref="dataSource2">
+    <service-properties>
+            <entry key="osgi.jndi.service.name" value="jdbc/flyway-datasource"/>
+    </service-properties>
+  </service>
+
+</blueprint>

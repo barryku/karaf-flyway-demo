@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint
+    xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:rr="http://www.ibm.com/appserver/schemas/8.0/blueprint/resourcereference"
+    xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0">
+  
+    <bean id="flyway" class="org.flywaydb.core.Flyway">
+    </bean>
+     
+    <reference id="datasource" interface="javax.sql.DataSource"
+               filter="(osgi.jndi.service.name=jdbc/flyway-datasource)" />
+    <bean
+        id="flyway-migrate"
+        class="com.barryku.karaf.flyway.DbMigrationService" init-method="doMigration">
+        <property name="datasource" ref="datasource" />
+        <property name="flyway" ref="flyway" />
+    </bean> 
+ 
+
+</blueprint>
