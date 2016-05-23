@@ -1,6 +1,6 @@
 This is a sample project to demo how to use Flyway on Karaf
 
-This was tested on Karaf 2.3.1. To run this project, do the following,
+This was devloped and tested on Karaf 2.3.1, and tested and verified on 3.0.6. To run this project, do the following,
 
 Install MySQL driver and Flyway to karaf
 
@@ -9,8 +9,8 @@ Install MySQL driver and Flyway to karaf
 
 Create a test database as followed,
 
-create database flyway_demo;   
-grant all on flyway_demo.* to flyway@localhost identified by 'flyway';
+* create database flyway_demo;   
+* grant all on flyway_demo.* to flyway@localhost identified by 'flyway';
 
 Deploy datasource by copying flyway-datasource.xml to deploy folder
 
