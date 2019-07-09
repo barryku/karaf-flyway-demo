@@ -3,6 +3,7 @@ package com.barryku.karaf.flyway;
 import javax.sql.DataSource;
 
 import org.flywaydb.core.Flyway;
+import org.flywaydb.core.api.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +15,7 @@ public class DbMigrationService {
 
 	public void doMigration() {
 		logger.info("============== karaf flyway migrateion demo =============");
+                LogFactory.setLogCreator(new Slf4jLogCreator());
 		ClassLoader thisClassLoader = this.getClass().getClassLoader();
 		getFlyway().setDataSource(datasource);
 		getFlyway().setClassLoader(thisClassLoader);
